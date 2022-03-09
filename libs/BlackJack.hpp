@@ -8,20 +8,19 @@
 
 using namespace std;
 
-class BlackJack : public Deck
+class BlackJack: public Deck
 {
 private:
     int round,
         numberOfPlayers = 0;
     vector<Player> players;
+    
 
 public:
-    BlackJack(ifstream deck);
-    BlackJack(ifstream deck, int numberOfPlayers);
-    ~BlackJack();
+    BlackJack(string path, int numberOfPlayers);
     void setNumberOfPlayers(unsigned int number);
     string start();
-    void dealCard(Player player);
+    void dealCard(int i);
 };
 
 #endif // __BLACKJACK_H__

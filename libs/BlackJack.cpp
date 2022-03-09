@@ -2,11 +2,13 @@
 
 void BlackJack::setNumberOfPlayers( unsigned int number)
 {
+    this->numberOfPlayers = number;
     for(unsigned int i = 0; i < number; ++i){
         Player player;
         player.setName(
-            "Player" + i
+            "Player" + to_string(i+1)
         );
+        cout << player.getName() <<endl;
         this->players.push_back(player);
     }
     
@@ -14,53 +16,62 @@ void BlackJack::setNumberOfPlayers( unsigned int number)
 
 string BlackJack::start()
 {
-    struct Winner
-    {
-        vector<int> sum;
-        string winner;
-    };
+    cout << "Iniciando o jogo com " << this->numberOfPlayers <<" Jogadores" << endl;
     
     for (size_t i = 0; i < this->numberOfPlayers; i++)
     {
-        dealCard(this->players[i]);
-        dealCard(this->players[i]);
-    }
-    
-    for (size_t i = 0; i < this->numberOfPlayers; i++)
-    {
-        bool finish = false;
-        while (!finish)
+        dealCard(i);
+        string finish = "YES";
+        while (finish == "YES" || finish == "Y")
         {
-            cout<< "Mais uma carta?";
+            dealCard(i);
+            cout<< "Player " << i + 1 << " mais uma carta? (Yes/No)";
             cin >> finish;
-            finish &= 0;
-            dealCard(this->players[i]);
         }
         
     }
 
+    struct Winner
+    {
+        vector<int> sum;
+        string winnerName;
+    };
+    
     Winner winner;
     for (size_t i = 0; i < this->numberOfPlayers; i++)
     {
-        Player player = players[i];
+        Player player = this->players.at(i);
+        cout 
+            << "O "
+            << player.getName()
+            << " tem "
+            << player.getCardsSum()
+            << endl;
         winner.sum.push_back(player.getCardsSum());
         if(!i){
             if (winner.sum[i] > winner.sum[i -1])
             {
-                winner.winner = player.getName();
+                winner.winnerName = player.getName();
             }
             
         }else{
-            winner.winner = player.getName();
+            winner.winnerName = player.getName();
         }               
     }
-    return winner.winner;    
+    cout << "O Ganhador foi " << winner.winnerName << endl;
+    return winner.winnerName;    
 }
 
-void BlackJack::dealCard(Player player)
+void BlackJack::dealCard(int i)
 {
-    Card card = this->cards[0];
-    this->cards.erase(cards.begin());
-    player.setHand(card);
+    cout << "Dando as cartas..." << endl;
+    cout << "Carta " << this->cards.at(0).getIntValue() << endl;
+    Card card = this->cards.at(0);
+    this->players.at(i).setHand(card);
+    this->cards.erase(cards.begin());    
+    cout << "Carta dada!" << endl;
 }
 
+BlackJack::BlackJack(string path, int numberOfPlayers): Deck(path){
+    this->setNumberOfPlayers(numberOfPlayers);
+}

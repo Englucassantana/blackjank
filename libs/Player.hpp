@@ -14,8 +14,6 @@ private:
     vector<Card> hand;
     
 public:
-    Player(/* args */);
-    ~Player();
     void setHand(Card card);
     void setName(string name);
     int getCardsSum();
