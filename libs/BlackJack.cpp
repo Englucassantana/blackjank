@@ -31,13 +31,8 @@ string BlackJack::start()
         
     }
 
-    struct Winner
-    {
-        vector<int> sum;
-        string winnerName;
-    };
-    
-    Winner winner;
+    unsigned int sum;
+    string winner;
     for (size_t i = 0; i < this->numberOfPlayers; i++)
     {
         Player player = this->players.at(i);
@@ -46,20 +41,20 @@ string BlackJack::start()
             << player.getName()
             << " tem "
             << player.getCardsSum()
-            << endl;
-        winner.sum.push_back(player.getCardsSum());
+            << endl;       
         if(!i){
-            if (winner.sum[i] > winner.sum[i -1])
+            if (player.getCardsSum() > sum)
             {
-                winner.winnerName = player.getName();
+                winner = player.getName();
             }
             
         }else{
-            winner.winnerName = player.getName();
+            sum = player.getCardsSum();
+            winner = player.getName();
         }               
     }
-    cout << "O Ganhador foi " << winner.winnerName << endl;
-    return winner.winnerName;    
+    cout << "O Ganhador foi " << winner << endl;
+    return winner;    
 }
 
 void BlackJack::dealCard(int i)
