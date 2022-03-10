@@ -11,16 +11,16 @@ using namespace std;
 class BlackJack: public Deck
 {
 private:
-    int round,
-        numberOfPlayers = 0;
-    vector<Player> players;
-    
+  int round,
+    numberOfPlayers = 0;
+  vector<Player> players;
+  
 
 public:
-    BlackJack(string path, int numberOfPlayers);
-    void setNumberOfPlayers(unsigned int number);
-    string start();
-    void dealCard(int i);
+  BlackJack(string path, int numberOfPlayers);
+  void setNumberOfPlayers(unsigned int number);
+  string start();
+  void dealCard(int i);
 };
 
 #endif // __BLACKJACK_H__

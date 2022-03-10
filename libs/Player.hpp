@@ -10,14 +10,14 @@ using namespace std;
 class Player
 {
 private:
-    string name;
-    vector<Card> hand;
-    
+  string name;
+  vector<Card> hand;
+  
 public:
-    void setHand(Card card);
-    void setName(string name);
-    int getCardsSum();
-    string getName();
+  void setHand(Card card);
+  void setName(string name);
+  int getCardsSum();
+  string getName();
 };
 
 #endif // __PLAYER_H__

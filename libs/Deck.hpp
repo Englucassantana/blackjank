@@ -11,11 +11,11 @@ using namespace  std;
 class Deck
 {
 protected:
-    vector<Card> cards;
-    fstream shuffledDeck;
+  vector<Card> cards;
+  fstream shuffledDeck;
 public:
-    Deck(string path);
-    void shuffle();
+  Deck(string path);
+  void shuffle();
 };
 
 
