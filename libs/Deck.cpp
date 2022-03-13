@@ -30,5 +30,28 @@ Deck::Deck(string path)
 
 void Deck::shuffle()
 {
-  
+  default_random_engine generator;
+  vector<Card> newCards;
+  int i = 0;
+  ofstream outFile;
+  outFile.open("./data/shuffleDeck.txt");
+
+  while(cards.size()>0){
+    uniform_int_distribution<int> distribution(0,cards.size() - 1);
+    int randomNumber = distribution(generator);
+    newCards.push_back(cards.at(randomNumber));
+    this->cards.erase(cards.begin()+randomNumber);
+
+    string card;
+    (this->cards.size()!=0) ? 
+      card = newCards.at(i).getValue() + " " + newCards.at(i).getSuit() + "\n" :
+      card = newCards.at(i).getValue() + " " + newCards.at(i).getSuit();
+    
+    outFile.write(card.c_str(), card.size());
+    
+    ++i;
+  }
+
+  outFile.close();
+  this->cards = newCards;
 }

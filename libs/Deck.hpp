@@ -4,6 +4,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <random>
+#include <string>
+#include <cstring>
 #include "Card.hpp"
 
 using namespace  std;
