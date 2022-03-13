@@ -2,3 +2,6 @@ build/
 *.o
 main
 .vscode/
+deck.teste
+*.dSYM
+shuffleDeck.txt
