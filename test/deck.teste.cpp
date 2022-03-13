@@ -6,9 +6,9 @@ int main(int argc, char const *argv[])
 {
   string path = "data/baralho.txt";
   BlackJack match(path,2);
-  //match.start();
-  Deck deck(path);
-  deck.shuffle();
+  match.start();
+  // Deck deck(path);
+  // deck.shuffle();
   
   return 0;
 }

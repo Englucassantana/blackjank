@@ -11,8 +11,7 @@ using namespace std;
 class BlackJack: public Deck
 {
 private:
-  int round,
-    numberOfPlayers = 0;
+  int round, numberOfPlayers;
   vector<Player> players;
   
 
