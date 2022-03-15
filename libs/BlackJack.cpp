@@ -17,7 +17,7 @@ void BlackJack::setNumberOfPlayers( unsigned int number)
 string BlackJack::start()
 {
   cout << "Iniciando o jogo com " << this->numberOfPlayers <<" Jogadores" << endl;
-  
+  shuffle();
   for (size_t i = 0; i < this->numberOfPlayers; i++)
   {
     dealCard(i);
